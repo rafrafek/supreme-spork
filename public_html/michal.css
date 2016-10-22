@@ -1,0 +1,42 @@
+body {
+    box-sizing: border-box;
+    padding: 0.2cm;
+    background-color: #677889
+}
+
+.container {
+    text-align: center;
+    border: solid transparent;
+    border-width: 0 0 1px 0;
+    width: auto;
+    margin: 0 auto 0 auto;
+    min-width: 7cm;
+    max-width: 12cm;
+    padding: 0.2cm 0.2cm 0 0.2cm;
+    background-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -o-user-select: none; 
+    unselectable: on
+}
+
+.ins {
+    border-radius: 25px;
+    color: whitesmoke;
+    cursor: pointer;
+    font-size: 0.5cm;
+    line-height: 1.5cm;
+    height: 1.5cm;
+    margin: 0 0 0.2cm 0;
+    padding: 0;
+    border-width: 0;
+    background-color: #20B2AA
+}
+
+.ins:active {
+    background-color: #10A29A
+}
