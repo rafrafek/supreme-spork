@@ -18,15 +18,17 @@ function clicked(elem) {
 }
 
 function pysznia(inpucik,tekscik){
+    tekscik.value = tekscik.value.replace(/</g,"");
+    tekscik.value = tekscik.value.replace(/>/g,"");
+    tekscik.value = tekscik.value.replace(/[\/]/g,"");
+    tekscik.value = tekscik.value.replace(/'/g,"");
+    tekscik.value = tekscik.value.replace(/"/g,"");
     if (inpucik.keyCode === 13 && tekscik.value !== "") {
-        var polepszony = encodeURIComponent(tekscik.value);
-        polepszony = polepszony.replace(/%20/g," ");
-        polepszony = polepszony.replace(/%3F/g,"?");
         var zbiorek = window.document.getElementById("zbiorek");
-        polepszony = polepszony[0].toUpperCase() + polepszony.substring(1);
+        tekscik.value = tekscik.value[0].toUpperCase() + tekscik.value.substring(1);
         zbiorek.innerHTML = '<div class="elemento" onclick="clicked(this)">'+
                 '<div class="rowio">'+
-                '<div class="komorkaS">'+polepszony+'</div>'+
+                '<div class="komorkaS">'+tekscik.value+'</div>'+
                 '</div>'+
                 '<div class="rowio">'+
                 '<div class="komorka">a</div>'+
