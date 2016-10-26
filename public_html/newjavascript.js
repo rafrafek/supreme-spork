@@ -17,42 +17,72 @@ function clicked(elem) {
     }
 }
 
-function pysznia(inpucik,tekscik){
-    tekscik.value = tekscik.value.replace(/</g,"");
-    tekscik.value = tekscik.value.replace(/>/g,"");
-    tekscik.value = tekscik.value.replace(/[\/]/g,"");
-    tekscik.value = tekscik.value.replace(/'/g,"");
-    tekscik.value = tekscik.value.replace(/"/g,"");
+function pysznia(inpucik, tekscik) {
     if (inpucik.keyCode === 13 && tekscik.value !== "") {
-        var zbiorek = window.document.getElementById("zbiorek");
+        zwin();
         tekscik.value = tekscik.value[0].toUpperCase() + tekscik.value.substring(1);
-        zbiorek.innerHTML = '<div class="elemento" onclick="clicked(this)">'+
-                '<div class="rowio">'+
-                '<div class="komorkaS">'+tekscik.value+'</div>'+
-                '</div>'+
-                '<div class="rowio">'+
-                '<div class="komorka">a</div>'+
-                '<div class="komorka">b</div>'+
-                '<div class="komorka">c</div>'+
-                '</div>'+
-                '</div>' + zbiorek.innerHTML;     
+        wstaw(tekscik.value);
         tekscik.value = "";
     }
 }
 
+function wstaw(tekst) {
+    var zbiorek = window.document.getElementById("zbiorek");
+    var jeden = document.createElement("div");
+    jeden.className = "elemento";
+    var dwa = document.createElement("div");
+    dwa.className = "rowio";
+    var trzy = document.createElement("div");
+    trzy.className = "komorkaS";
+    trzy.textContent = tekst;
+    var cztery = document.createElement("div");
+    cztery.className = "rowio";
+    var piec = document.createElement("div");
+    piec.className = "komorka";
+    piec.innerHTML = "a";
+    var szesc = document.createElement("div");
+    szesc.className = "komorka";
+    szesc.innerHTML = "b";
+    var siedem = document.createElement("div");
+    siedem.className = "komorka";
+    siedem.innerHTML = "a";
+    jeden.appendChild(dwa);
+    jeden.appendChild(cztery);
+    dwa.appendChild(trzy);
+    cztery.appendChild(piec);
+    cztery.appendChild(szesc);
+    cztery.appendChild(siedem);
+    zbiorek.insertBefore(jeden, zbiorek.firstChild);
+    var nowy = zbiorek.firstChild;
+    nowy.dlugi = 0;
+    nowy.onclick = function(){clicked(nowy)}; 
+}
+
+function zwin() {
+    var wszystkie = window.document.getElementsByClassName("elemento");
+    var i = 0;
+    for (i = 0; i < wszystkie.length; i++) {
+        if (wszystkie[i].dlugie === 1) {
+            jeslidlugie(wszystkie[i]);
+        }
+    }
+}
+
 function jeslikrotkie(emcio) {
+    zwin();
     var pos = 150;
     var id = setInterval(frame, 10);
     function frame() {
         if (pos === 300) {
             clearInterval(id);
-            var secRow = emcio.getElementsByTagName("div")[2];
+            var secRow = emcio.getElementsByClassName("rowio")[1];
             secRow.getElementsByTagName("div")[0].innerHTML = "xDDD";
             emcio.dlugie = 1;
             emcio.trwa = 0;
         } else {
             pos += 10;
-            if (pos > 300) pos = 300;
+            if (pos > 300)
+                pos = 300;
             emcio.style.height = pos / 100.0 + 'cm';
         }
     }
@@ -68,7 +98,8 @@ function jeslidlugie(emcio) {
             emcio.trwa = 0;
         } else {
             pos -= 10;
-            if (pos < 150) pos = 150;
+            if (pos < 150)
+                pos = 150;
             emcio.style.height = pos / 100.0 + 'cm';
         }
     }
