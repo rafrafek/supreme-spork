@@ -63,7 +63,7 @@ function zwin() {
     var i = 0;
     for (i = 0; i < wszystkie.length; i++) {
         if (wszystkie[i].dlugie === 1) {
-            jeslidlugie(wszystkie[i]);
+            clicked(wszystkie[i]);
         }
     }
 }
