@@ -8,11 +8,23 @@ function clicked(elem) {
         elem.trwa = 0;
     }
     if (elem.trwa === 0) {
-        elem.trwa = 1;
         if (elem.dlugie === 1) {
+            elem.trwa = 1;
             jeslidlugie(elem);
         } else {
-            jeslikrotkie(elem);
+            var wszystkie = window.document.getElementsByClassName("elemento");
+            var i = 0;
+            var czymozna = 1;
+            for (i = 0; i < wszystkie.length; i++) {
+                if (wszystkie[i].trwa === 1) {
+                    czymozna = 0;
+                    break;
+                }
+            }
+            if (czymozna === 1) {
+                elem.trwa = 1;
+                jeslikrotkie(elem);
+            }
         }
     }
 }
@@ -55,7 +67,9 @@ function wstaw(tekst) {
     zbiorek.insertBefore(jeden, zbiorek.firstChild);
     var nowy = zbiorek.firstChild;
     nowy.dlugi = 0;
-    nowy.onclick = function(){clicked(nowy)}; 
+    nowy.onclick = function () {
+        clicked(nowy);
+    };
 }
 
 function zwin() {
