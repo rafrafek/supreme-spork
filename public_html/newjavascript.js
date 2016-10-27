@@ -11,11 +11,11 @@ function clicked(elem) {
         if (elem.dlugie === 1) {
             elem.trwa = 1;
             jeslidlugie(elem);
-        } else {
+        } 
+        else {
             var wszystkie = window.document.getElementsByClassName("elemento");
-            var i = 0;
             var czymozna = 1;
-            for (i = 0; i < wszystkie.length; i++) {
+            for (var i = 0; i < wszystkie.length; i++) {
                 if (wszystkie[i].trwa === 1) {
                     czymozna = 0;
                     break;
@@ -57,7 +57,7 @@ function wstaw(tekst) {
     szesc.innerHTML = "b";
     var siedem = document.createElement("div");
     siedem.className = "komorka";
-    siedem.innerHTML = "a";
+    siedem.innerHTML = "c";
     jeden.appendChild(dwa);
     jeden.appendChild(cztery);
     dwa.appendChild(trzy);
@@ -74,8 +74,7 @@ function wstaw(tekst) {
 
 function zwin() {
     var wszystkie = window.document.getElementsByClassName("elemento");
-    var i = 0;
-    for (i = 0; i < wszystkie.length; i++) {
+    for (var i = 0; i < wszystkie.length; i++) {
         if (wszystkie[i].dlugie === 1) {
             clicked(wszystkie[i]);
         }
